@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Reserva</title>
+
+    <style>
+        body {
+            font-family: Oswald, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .pedido {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .rellenar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .carton-info {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        label {
+            font-size: 1em;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 1em;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #494845;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {  /*hover es para cuando se pasa ratón por encima*/
+            background-color: #11100d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pedido">
+        <h2>Usted ha seleccionado un pedido de:</h2>
+        
+        <!-- Mostrar los cartones seleccionados -->
+        <div id="carton12-info" class="carton-info">
+            <p id="carton12-valor"></p>
+        </div>
+
+        <div id="carton24-info" class="carton-info">
+            <p id="carton24-valor"></p>
+        </div>
+
+        <div id="carton30-info" class="carton-info">
+            <p id="carton30-valor"></p>
+        </div>
+
+        <br>
+        <h3>Introduzca los siguientes datos para completar su reserva:</h3>
+    </div>
+
+    <!-- Formulario para ingresar nombre y dirección -->
+    <form id="formularioReserva" action="agradecimiento.html">
+        <div class="rellenar">
+            <label for="nombre">Nombre y apellidos</label>
+            <input type="text" required>
+
+            <label for="direccion">Dirección de su domicilio</label>
+            <input type="text" required>
+
+            <label>Teléfono de contacto</label>
+            <input type ="number" required>
+
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+
+    <script>
+        // Recuperar los valores almacenados en localStorage
+        const carton12 = localStorage.getItem("carton12");
+        const carton24 = localStorage.getItem("carton24");
+        const carton30 = localStorage.getItem("carton30");
+
+        // Mostrar los valores en los elementos correspondientes
+        document.getElementById("carton12-valor").innerText = carton12 === "Ninguno" ? "" : carton12 + " de 12 huevos";
+        document.getElementById("carton24-valor").innerText = carton24 === "Ninguno" ? "" : carton24 + " de 24 huevos";
+        document.getElementById("carton30-valor").innerText = carton30 === "Ninguno" ? "" : carton30 + " de 30 huevos";
+    </script>
+
+</body>
+</html>
